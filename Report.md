@@ -24,9 +24,15 @@ In FreenNOS-1.0.3/lib/libarch/MemoryContext.c,
 
     FreeNOS uses principle of paging for partitioning its logical address space and physical memory. 
     
-	    Line 147:maps physical pages to virtual addresses 
+	    Line 147:maps physical pages to virtual addresses. It has a for loop which goes up to the range of the physical memory size which is given as 	      the parameter. By using the map function, the virutal address is mapped to physical address until the size of RAM is full or the virtual 		    address cannot be mapped to physical address anymore. 
         
 	    	virtual Result mapRangeContiguous(Memory::Range *range)
+
+In FreeNOS-1.0.3/lib/libarch/IO, 
+
+	Line 38: This is for mapping virtual address to physical memory which is used by other functions such mapRangeContiguous function. 
+	
+		IO::Result IO::map(Address phys, Size size, Memory::Access access)
 		
 In FreeNOS-1.0.3/lib/libarch/MemoryMap.h, 
 
